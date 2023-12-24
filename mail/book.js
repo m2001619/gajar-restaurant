@@ -1,25 +1,29 @@
 $(function () {
-  $("#contactForm input, #contactForm textarea").jqBootstrapValidation({
+  $("#bookForm input, #bookForm select").jqBootstrapValidation({
     preventSubmit: true,
     submitError: function ($form, event, errors) {},
     submitSuccess: function ($form, event) {
       event.preventDefault();
-      const name = $("input#name").val();
-      const email = $("input#email").val();
-      const subject = $("input#subject").val();
-      const message = $("textarea#message").val();
+      const name = $("input#book-name").val();
+      const email = $("input#book-email").val();
+      const phone = $("input#book-phone").val();
+      const date = $("input#book-date").val();
+      const time = $("input#book-time").val();
+      const guest = $("select#book-guest").val();
 
-      $this = $("#sendMessageButton");
+      $this = $("#bookButton");
       $this.prop("disabled", true);
 
       $.ajax({
-        url: "contact.php",
+        url: "book.php",
         type: "POST",
         data: {
-          name: name,
-          email: email,
-          subject: subject,
-          message: message,
+          name,
+          email,
+          phone,
+          date,
+          time,
+          guest,
         },
         cache: false,
         success: function () {
@@ -30,10 +34,10 @@ $(function () {
             )
             .append("</button>");
           $("#success > .alert-success").append(
-            "<strong>Your message has been sent. </strong>"
+            "<strong>You Have Booked Table Successfully</strong>"
           );
           $("#success > .alert-success").append("</div>");
-          $("#contactForm").trigger("reset");
+          $("#bookForm").trigger("reset");
         },
         error: function () {
           $("#success").html("<div class='alert alert-danger'>");
@@ -43,15 +47,16 @@ $(function () {
             )
             .append("</button>");
           $("#success > .alert-danger").append(
-            Swal.fire({
-              title: "Mesajiniz Başarıyla Alındı",
-              text: "Önerinizi dikkate alıp en iyi hizmeti sunmak için çalışacağız.",
-              icon: "success",
-              confirmButtonText: "Tamam",
-            })
+              Swal.fire({
+                  title: 'Rezervasyonunuz Başarıyla Alındı',
+                  text: 'Rezervasyonunuzun durumu hakkında size bir e-posta göndereceğiz',
+                  icon: 'success',
+                  confirmButtonText: 'Tamam'
+              })
           );
+          $("#bookForm").trigger("reset")
           $("#success > .alert-danger").append("</div>");
-          $("#contactForm").trigger("reset");
+          $("#bookForm").trigger("reset");
         },
         complete: function () {
           setTimeout(function () {
@@ -72,5 +77,5 @@ $(function () {
 });
 
 $("#name").focus(function () {
-  $("#success").html("");
+  //Swal.fire('Success', 'You have booked table successfully', 'success')
 });

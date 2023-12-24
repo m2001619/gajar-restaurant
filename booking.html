@@ -23,6 +23,7 @@
 
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
+        <link href="css/sweetAlert.css" rel="stylesheet">
     </head>
 
     <body>
@@ -55,7 +56,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h2>masayi rezervasyonuz</h2>
+                        <h2>Masa Rezervasyonuz</h2>
                     </div>
                 </div>
             </div>
@@ -70,7 +71,7 @@
                     <div class="col-lg-7">
                         <div class="booking-content">
                             <div class="section-header">
-                                <p>masayi rezervasyonuz</p>
+                                <p>Masa Rezervasyonuz</p>
                                 <h2>Özel Akşam Yemekleri ve Mutlu Saatler İçin Masanızı Ayırın</h2>
                             </div>
                             <div class="about-text">
@@ -82,10 +83,10 @@
                     </div>
                     <div class="col-lg-5">
                         <div class="booking-form">
-                            <form>
+                            <form id="bookForm">
                                 <div class="control-group">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Adınız" required="required" />
+                                        <input id="book-name" type="text" class="form-control" placeholder="Adınız" required="required" />
                                         <div class="input-group-append">
                                             <div class="input-group-text"><i class="far fa-user"></i></div>
                                         </div>
@@ -93,7 +94,7 @@
                                 </div>
                                 <div class="control-group">
                                     <div class="input-group">
-                                        <input type="email" class="form-control" placeholder="E-posta" required="required" />
+                                        <input id="book-email" type="email" class="form-control" placeholder="E-posta" required="required" />
                                         <div class="input-group-append">
                                             <div class="input-group-text"><i class="far fa-envelope"></i></div>
                                         </div>
@@ -101,7 +102,7 @@
                                 </div>
                                 <div class="control-group">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Telefon" required="required" />
+                                        <input id="book-phone" type="text" class="form-control" placeholder="Telefon" required="required" />
                                         <div class="input-group-append">
                                             <div class="input-group-text"><i class="fa fa-mobile-alt"></i></div>
                                         </div>
@@ -109,7 +110,7 @@
                                 </div>
                                 <div class="control-group">
                                     <div class="input-group date" id="date" data-target-input="nearest">
-                                        <input type="text" class="form-control datetimepicker-input" placeholder="Tarih" data-target="#date" data-toggle="datetimepicker"/>
+                                        <input id="book-date" type="text" class="form-control datetimepicker-input" placeholder="Tarih" data-target="#date" data-toggle="datetimepicker"/>
                                         <div class="input-group-append" data-target="#date" data-toggle="datetimepicker">
                                             <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
                                         </div>
@@ -117,7 +118,7 @@
                                 </div>
                                 <div class="control-group">
                                     <div class="input-group time" id="time" data-target-input="nearest">
-                                        <input type="text" class="form-control datetimepicker-input" placeholder="Zaman" data-target="#time" data-toggle="datetimepicker"/>
+                                        <input id="book-time" type="text" class="form-control datetimepicker-input" placeholder="Zaman" data-target="#time" data-toggle="datetimepicker"/>
                                         <div class="input-group-append" data-target="#time" data-toggle="datetimepicker">
                                             <div class="input-group-text"><i class="far fa-clock"></i></div>
                                         </div>
@@ -125,7 +126,7 @@
                                 </div>
                                 <div class="control-group">
                                     <div class="input-group">
-                                        <select class="custom-select form-control">
+                                        <select id="book-guest" class="custom-select form-control">
                                             <option selected>Guest</option>
                                             <option value="1">1 Misafir</option>
                                             <option value="2">2 Misafir</option>
@@ -144,7 +145,7 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <button class="btn custom-btn" type="submit">Şimdi rezervasyonuz</button>
+                                    <button class="btn custom-btn" type="submit" id="bookButton">Şimdi rezervasyonuz</button>
                                 </div>
                             </form>
                         </div>
@@ -220,8 +221,10 @@
         <!-- Contact Javascript File -->
         <script src="mail/jqBootstrapValidation.min.js"></script>
         <script src="mail/contact.js"></script>
+        <script src="mail/book.js"></script>
 
         <!-- Template Javascript -->
         <script src="js/main.js"></script>
+        <script src="js/sweetAlert.js"></script>
     </body>
 </html>
